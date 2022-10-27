@@ -1,0 +1,238 @@
+mysql -u root
+create database exercicio3;
+use exercicio3;
+create table produto(
+idproduto varchar(10),
+nome varchar (20),
+descricao text,
+valor decimal (5,2)
+);
+insert into produto values 
+( 1, "bolsa", "bolsa de couro ecologico", 120);
+ insert into produto values 
+( 2, "vestido", "vestido gode vintage", 200);
+ insert into produto values 
+( 3, "calça", "calça jeans modelo mom", 290);
+ insert into produto values 
+( 4, "blusa", "blusa sem manga na cor preta", 140);
+ insert into produto values 
+( 5, "casaco", "casaco sobre tudo preto", 350);
+create table cliente(
+idcliente varchar(10),
+nome varchar(20),
+telefone varchar(10)
+);
+insert into cliente values
+(11, "samuel", 1111-1111);
+insert into cliente values
+(22, "eros", 2222-2222);
+insert into cliente values
+(33, "madalena", 3333-3333);
+insert into cliente values
+(44, "sansao", 4444-4444);
+insert into cliente values
+(55, "donatelo", 5555-5555);
+
+======================================
+
+#nome, email e telefone dos alunos;
+select nome, email,tipo,numero from aluno inner join telefone on idaluno = id_aluno;
+
+#nome, email e telefone das mulheres
+select nome, email, numero from aluno inner join telefone on idaluno = id_aluno where sexo="f";
+
+#nome, email e telefone dos homens
+select nome, email, numero from aluno inner join telefone on idaluno = id_aluno where sexo="m";
+
+#nome e telefone celular das mulheres
+select nome, numero from aluno inner join telefone on idaluno = id_aluno where sexo="f" and tipo ="cel";
+
+======================================
+
+create table venda(
+idvenda varchar(10),
+datavenda varchar(10),
+quantidade
+idproduto
+idcliente
+);
+
+===========================================================================
+AULA 4:
+
+mysql -u root
+
+create database aula4;
+
+use aula4;
+
+create table aluno(
+idaluno int primary key auto_increment,
+nome varchar(30) not null,
+sexo enum ('f','m') not null,
+email varchar(30) unique
+);
+
+insert into aluno values(null,'ana','f','ana@ig.com');
+insert into aluno values(null,'pedro','m','pedro@ig.com');
+insert into aluno values(null,'lucas','m','lucas@gmail.com');
+insert into aluno values(null,'vitor','m','vitor@gmail.com');
+insert into aluno values(null,'douglas','m','douglas@globo.com');
+insert into aluno values(null,'valeria','f','valeria@globo.com');
+insert into aluno values(null,'ellen','f','ellen@bol.com');
+
+select * from aluno;
+
+#fazer o aluno ter um único endereço: tabela de endereçoo de 1 para 1
+
+create table endereco(
+idendereco int primary key auto_increment,
+bairro varchar(30) not null,
+cidade enum('sp',rj','mg') not null,
+id_aluno int unique
+);
+
+create table endereco (
+idendereco int primary auto_increment,
+bairro varchar (30) not null,
+cidade enum ('sp','rj','mg') not null,
+id_aluno int unique
+);
+
+alter table endereco add constraint
+fk_endereco_aluno
+foreign key (id_aluno) references aluno (idaluno)
+on delete cascade;
+
+delete from aluno where idaluno =1;
+
+
+insert into endereco values (null, 'centro', 'rj', 1);
+
+insert into endereco values (null, 'centro', 'rj', 2);
+
+insert into endereco values (null, 'centro', 'mg', 3);
+
+
+create table endereco(
+idendereco int primary key auto_increment,
+bairro varchar (30) not null,
+cidade enum ('sp','rj','mg') not null,
+id_aluno int unique
+);
+
+alter table endereco add constraint fk_endereco_aluno foreign key (id_aluno) references aluno (idaluno) on delete cascade;
+
+ALTER TABLE ENDERECO ADD CONSTRAINT
+FK_ENDERECO_ALUNO
+FOREING KEY (id_aluno) REFERENCES ALUNO (idaluno)
+ON DELETE CASCADE;
+
+
+=================================================================
+
+#Exercício 03:
+
+
+Crie um banco de dados com o nome exercício3
+
+Dentro dele as seguintes tabelas
+
+Produto
+
+                                             Idproduto
+
+                                             Nome
+
+                                             Descrição
+
+                                             Valor
+
+Cliente
+
+                                             Idcliente
+
+                                             Nome
+
+                                             Telefone
+
+ 
+
+ 
+
+Ao criar a tabela de venda , inclua o relacionamento entre as tabelas de produto e cliente.         
+
+Venda
+
+                                             Idvenda
+
+                                             Datavenda
+
+                                             Quantidade
+
+                                             Idproduto
+
+                                             Idcliente
+                                             
+
+Cadastre 5 produtos na tabela de produto
+
+Cadastre 5 clientes na tabela de cliente
+ insert into produto values 
+( 1, "bolsa", "bolsa de couro ecologico", 120);
+ insert into produto values 
+( 2, "vestido", "vestido gode vintage", 200);
+ insert into produto values 
+( 3, "calça", "calça jeans modelo mom", 290);
+ insert into produto values 
+( 4, "blusa", "blusa sem manga na cor preta", 140);
+ insert into produto values 
+( 5, "casaco", "casaco sobre tudo preto", 350);
+
+
+===================================
+
+
+insert into cliente values
+(11, "samuel", 1111-1111);
+insert into cliente values
+(22, "eros", 2222-2222);
+insert into cliente values
+(33, "madalena", 3333-3333);
+insert into cliente values
+(44, "sansao", 4444-4444);
+insert into cliente values
+
+
+from aluno inner join endereco where idaluno = id_aluno;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
